@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragToDo", "DragToDo\DragToDo\DragToDo.csproj", "{897A152F-630A-4229-97A1-E624CF7CA137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragToDo.Android", "DragToDo\DragToDo.Android\DragToDo.Android.csproj", "{24B69472-09FD-4CA8-9E18-781FDECCD2C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragToDo.Desktop", "DragToDo\DragToDo.Desktop\DragToDo.Desktop.csproj", "{4934BB73-6F14-4545-96A8-44CF265F9109}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragToDo.iOS", "DragToDo\DragToDo.iOS\DragToDo.iOS.csproj", "{18046E1E-48B8-4950-A02B-B8422B23CC35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragToDo.Browser", "DragToDo\DragToDo.Browser\DragToDo.Browser.csproj", "{41737F82-C957-4807-9323-33352948F62C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{897A152F-630A-4229-97A1-E624CF7CA137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{897A152F-630A-4229-97A1-E624CF7CA137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{897A152F-630A-4229-97A1-E624CF7CA137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{897A152F-630A-4229-97A1-E624CF7CA137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24B69472-09FD-4CA8-9E18-781FDECCD2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B69472-09FD-4CA8-9E18-781FDECCD2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B69472-09FD-4CA8-9E18-781FDECCD2C6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{24B69472-09FD-4CA8-9E18-781FDECCD2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B69472-09FD-4CA8-9E18-781FDECCD2C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24B69472-09FD-4CA8-9E18-781FDECCD2C6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4934BB73-6F14-4545-96A8-44CF265F9109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4934BB73-6F14-4545-96A8-44CF265F9109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4934BB73-6F14-4545-96A8-44CF265F9109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4934BB73-6F14-4545-96A8-44CF265F9109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18046E1E-48B8-4950-A02B-B8422B23CC35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18046E1E-48B8-4950-A02B-B8422B23CC35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18046E1E-48B8-4950-A02B-B8422B23CC35}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{18046E1E-48B8-4950-A02B-B8422B23CC35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18046E1E-48B8-4950-A02B-B8422B23CC35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18046E1E-48B8-4950-A02B-B8422B23CC35}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{41737F82-C957-4807-9323-33352948F62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41737F82-C957-4807-9323-33352948F62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41737F82-C957-4807-9323-33352948F62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41737F82-C957-4807-9323-33352948F62C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CC97008-3D8C-4C4A-BE09-C34CED7F3C9F}
+	EndGlobalSection
+EndGlobal
