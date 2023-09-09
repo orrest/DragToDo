@@ -26,7 +26,7 @@ public static class ViewModelsBootstrapper
 
     private static void RegisterCommonViewModels(IMutableDependencyResolver services, IReadonlyDependencyResolver resolver)
     {
-        services.Register(() => new MainViewModel(resolver.GetRequiredService<IHttpService>()));
+        services.Register(() => new MainViewModel());
     }
 
     private static void RegisterPlatformSpecificViewModels(IMutableDependencyResolver services, IReadonlyDependencyResolver resolver)
