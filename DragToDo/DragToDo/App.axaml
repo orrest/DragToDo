@@ -2,14 +2,12 @@
     x:Class="DragToDo.App"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
     xmlns:local="using:DragToDo"
+    xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
     xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles"
     RequestedThemeVariant="Default">
-    <Application.Resources>
-        <FontFamily x:Key="ContentControlThemeFontFamily">fonts:Inter#Inter, $Default</FontFamily>
-    </Application.Resources>
-
     <Application.Styles>
         <themes:MaterialTheme
             BaseTheme="Dark"
@@ -17,4 +15,7 @@
             SecondaryColor="Lime" />
         <icons:MaterialIconStyles />
     </Application.Styles>
+    <Application.Resources>
+        <FontFamily x:Key="ContentControlThemeFontFamily">fonts:Inter#Inter, $Default</FontFamily>
+    </Application.Resources>
 </Application>

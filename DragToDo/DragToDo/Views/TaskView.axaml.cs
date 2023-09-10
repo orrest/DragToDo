@@ -3,7 +3,7 @@ using Avalonia.ReactiveUI;
 using DragToDo.ViewModels;
 using ReactiveUI;
 
-namespace DragToDo;
+namespace DragToDo.Views;
 
 public partial class TaskView : ReactiveUserControl<TaskViewModel>
 {

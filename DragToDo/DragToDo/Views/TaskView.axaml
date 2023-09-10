@@ -1,9 +1,48 @@
 <UserControl
-    x:Class="DragToDo.TaskView"
+    x:Class="DragToDo.Views.TaskView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    mc:Ignorable="d" />
+    mc:Ignorable="d">
+
+    <TabControl>
+        <TabControl.Items>
+            <TabItem>
+                <TabItem.Header>
+                    <md:Card>
+                        <TextBlock
+                            Width="200"
+                            Text="周"
+                            TextAlignment="Center" />
+                    </md:Card>
+                </TabItem.Header>
+                <md:Card Margin="30">
+                    <ListBox>
+                        <ListBoxItem>
+                            <Expander Header="任务描述1">
+                                <ListBox>
+                                    <ListBoxItem>
+                                        <md:Card>
+                                            <TextBlock Margin="0,10" Text="步骤描述1" />
+                                        </md:Card>
+                                    </ListBoxItem>
+                                </ListBox>
+                            </Expander>
+                        </ListBoxItem>
+                    </ListBox>
+                </md:Card>
+            </TabItem>
+
+            <TabItem Header="月">
+                <TextBlock Classes="Centered" Text="Page 2" />
+            </TabItem>
+            <TabItem Header="年">
+                <TextBlock Classes="Centered" Text="Page 3" />
+            </TabItem>
+        </TabControl.Items>
+    </TabControl>
+</UserControl>

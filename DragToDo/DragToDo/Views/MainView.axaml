@@ -9,8 +9,9 @@
     xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
     xmlns:rxui="clr-namespace:Avalonia.ReactiveUI;assembly=Avalonia.ReactiveUI"
     xmlns:vm="clr-namespace:DragToDo.ViewModels"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    xmlns:vw="clr-namespace:DragToDo.Views"
+    d:DesignHeight="600"
+    d:DesignWidth="1020"
     x:DataType="vm:MainViewModel"
     mc:Ignorable="d">
     <Design.DataContext>
@@ -25,25 +26,19 @@
         <md:Card Grid.Column="0">
             <Grid RowDefinitions="*, 8*, *">
                 <TextBlock
-                    Margin="10,20"
+                    Margin="20"
                     FontSize="18"
                     Text="Title" />
                 <ListBox Grid.Row="1">
                     <ListBox.Items>
                         <ListBoxItem>
-                            <md:Card>
-                                <TextBlock Text="Tasks" />
-                            </md:Card>
+                            <TextBlock Text="Tasks" />
                         </ListBoxItem>
                         <ListBoxItem>
-                            <md:Card>
-                                <TextBlock Text="Countdowns" />
-                            </md:Card>
+                            <TextBlock Text="Countdowns" />
                         </ListBoxItem>
                         <ListBoxItem>
-                            <md:Card>
-                                <TextBlock Text="Memos" />
-                            </md:Card>
+                            <TextBlock Text="Memos" />
                         </ListBoxItem>
                     </ListBox.Items>
                 </ListBox>
@@ -64,10 +59,7 @@
 
         <rxui:RoutedViewHost Grid.Column="1">
             <rxui:RoutedViewHost.DefaultContent>
-                <TextBlock
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Text="Default content" />
+                <vw:TaskView />
             </rxui:RoutedViewHost.DefaultContent>
             <rxui:RoutedViewHost.ViewLocator>
                 <!--  See AppViewLocator.cs section below  -->
