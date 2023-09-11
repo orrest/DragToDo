@@ -31,13 +31,13 @@
                     Text="Title" />
                 <ListBox Grid.Row="1">
                     <ListBox.Items>
-                        <ListBoxItem>
+                        <ListBoxItem Classes="menuListItem">
                             <TextBlock Text="Tasks" />
                         </ListBoxItem>
-                        <ListBoxItem>
+                        <ListBoxItem Classes="menuListItem">
                             <TextBlock Text="Countdowns" />
                         </ListBoxItem>
-                        <ListBoxItem>
+                        <ListBoxItem Classes="menuListItem">
                             <TextBlock Text="Memos" />
                         </ListBoxItem>
                     </ListBox.Items>

@@ -14,6 +14,7 @@
             PrimaryColor="Purple"
             SecondaryColor="Lime" />
         <icons:MaterialIconStyles />
+        <StyleInclude Source="/Styles/Common.axaml" />
     </Application.Styles>
     <Application.Resources>
         <FontFamily x:Key="ContentControlThemeFontFamily">fonts:Inter#Inter, $Default</FontFamily>

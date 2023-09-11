@@ -1,0 +1,49 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <ListBox>
+                <ListBox.Items>
+                    <ListBoxItem>
+                        <TextBlock Text="Abc" />
+                    </ListBoxItem>
+                </ListBox.Items>
+            </ListBox>
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="ListBoxItem.menuListItem">
+        <Setter Property="Background" Value="#4C4A48" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Margin="0,5" ColumnDefinitions="12,*">
+                    <Panel
+                        Grid.Column="0"
+                        Width="4"
+                        Margin="4,6"
+                        HorizontalAlignment="Left"
+                        IsVisible="False">
+                        <Border Background="#0099BC" CornerRadius="3" />
+                    </Panel>
+                    <md:Card Grid.Column="1" Background="{TemplateBinding Background}">
+                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    </md:Card>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="ListBoxItem.menuListItem:pointerover">
+        <Setter Property="Background" Value="#5D5A58" />
+    </Style>
+
+    <Style Selector="ListBoxItem.menuListItem:selected">
+        <Setter Property="Background" Value="#5D5A58" />
+    </Style>
+
+    <Style Selector="ListBoxItem.menuListItem:selected /template/ Panel">
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+</Styles>
