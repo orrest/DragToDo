@@ -4,18 +4,22 @@
     xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles">
     <Design.PreviewWith>
         <Border Padding="20">
-            <ListBox>
+            <ListBox Classes="menuList">
                 <ListBox.Items>
                     <ListBoxItem>
-                        <TextBlock Text="Abc" />
+                        <Grid>
+                            <TextBlock Text="Abc" />
+                        </Grid>
                     </ListBoxItem>
                 </ListBox.Items>
             </ListBox>
         </Border>
     </Design.PreviewWith>
 
-    <Style Selector="ListBoxItem.menuListItem">
+    <Style Selector="ListBox.menuList ListBoxItem">
         <Setter Property="Background" Value="#4C4A48" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid Margin="0,5" ColumnDefinitions="12,*">
@@ -27,23 +31,27 @@
                         IsVisible="False">
                         <Border Background="#0099BC" CornerRadius="3" />
                     </Panel>
-                    <md:Card Grid.Column="1" Background="{TemplateBinding Background}">
-                        <ContentPresenter Content="{TemplateBinding Content}" />
+                    <md:Card
+                        Grid.Column="1"
+                        Padding="0"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
                     </md:Card>
                 </Grid>
             </ControlTemplate>
         </Setter>
     </Style>
 
-    <Style Selector="ListBoxItem.menuListItem:pointerover">
+    <Style Selector="ListBox.menuList ListBoxItem:pointerover">
         <Setter Property="Background" Value="#5D5A58" />
     </Style>
 
-    <Style Selector="ListBoxItem.menuListItem:selected">
+    <Style Selector="ListBox.menuList ListBoxItem:selected">
         <Setter Property="Background" Value="#5D5A58" />
     </Style>
 
-    <Style Selector="ListBoxItem.menuListItem:selected /template/ Panel">
+    <Style Selector="ListBox.menuList ListBoxItem:selected /template/ Panel">
         <Setter Property="IsVisible" Value="True" />
     </Style>
+
 </Styles>

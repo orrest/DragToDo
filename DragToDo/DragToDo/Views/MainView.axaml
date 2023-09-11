@@ -4,6 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:app="clr-namespace:DragToDo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+    xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+    xmlns:iac="clr-namespace:Avalonia.Xaml.Interactions.Custom;assembly=Avalonia.Xaml.Interactions.Custom"
     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
@@ -29,18 +32,23 @@
                     Margin="20"
                     FontSize="18"
                     Text="Title" />
-                <ListBox Grid.Row="1">
-                    <ListBox.Items>
-                        <ListBoxItem Classes="menuListItem">
-                            <TextBlock Text="Tasks" />
-                        </ListBoxItem>
-                        <ListBoxItem Classes="menuListItem">
-                            <TextBlock Text="Countdowns" />
-                        </ListBoxItem>
-                        <ListBoxItem Classes="menuListItem">
-                            <TextBlock Text="Memos" />
-                        </ListBoxItem>
-                    </ListBox.Items>
+                <ListBox
+                    Grid.Row="1"
+                    Classes="menuList"
+                    ItemsSource="{Binding Menu}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:MenuItem}">
+                            <Grid>
+                                <i:Interaction.Behaviors>
+                                    <ia:EventTriggerBehavior EventName="PointerPressed">
+                                        <ia:InvokeCommandAction Command="{Binding NavigateCommand}" />
+                                    </ia:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                                <Rectangle Fill="Transparent" />
+                                <TextBlock Margin="8" Text="{Binding Name}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
                 <Button
                     Grid.Row="2"
@@ -57,7 +65,7 @@
             </Grid>
         </md:Card>
 
-        <rxui:RoutedViewHost Grid.Column="1">
+        <rxui:RoutedViewHost Grid.Column="1" Router="{Binding Router}">
             <rxui:RoutedViewHost.DefaultContent>
                 <vw:TaskView />
             </rxui:RoutedViewHost.DefaultContent>

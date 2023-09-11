@@ -1,6 +1,18 @@
-﻿namespace DragToDo.ViewModels;
+﻿using ReactiveUI;
+using System;
 
-public class TaskViewModel : ViewModelBase
+namespace DragToDo.ViewModels;
+
+public class TaskViewModel : ViewModelBase, IRoutableViewModel
 {
+    // Unique identifier for the routable view model.
+    public string UrlPathSegment { get; } = Guid.NewGuid().ToString().Substring(0, 5);
 
+    // Reference to IScreen that owns the routable view model.
+    public IScreen HostScreen { get; }
+
+    public TaskViewModel(IScreen screen)
+    {
+        HostScreen = screen;
+    }
 }
