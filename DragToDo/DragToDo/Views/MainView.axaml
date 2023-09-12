@@ -37,7 +37,7 @@
                     Classes="menuList"
                     ItemsSource="{Binding Menu}">
                     <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type vm:MenuItem}">
+                        <DataTemplate DataType="{x:Type vm:MainMenuItem}">
                             <Grid>
                                 <i:Interaction.Behaviors>
                                     <ia:EventTriggerBehavior EventName="PointerPressed">

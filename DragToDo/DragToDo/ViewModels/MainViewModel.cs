@@ -1,7 +1,7 @@
-﻿using ReactiveUI;
+﻿using DragToDo.Navigation;
+using ReactiveUI;
 using System;
 using System.Collections.ObjectModel;
-using System.Reactive;
 
 namespace DragToDo.ViewModels;
 
@@ -11,8 +11,8 @@ public class MainViewModel : ViewModelBase, IScreen
     // Required by the IScreen interface.
     public RoutingState Router { get; } = new RoutingState();
 
-    private ObservableCollection<MenuItem> menu = new ObservableCollection<MenuItem>();
-    public ObservableCollection<MenuItem> Menu 
+    private ObservableCollection<MainMenuItem> menu = new ObservableCollection<MainMenuItem>();
+    public ObservableCollection<MainMenuItem> Menu 
     {
         get { return menu; }
         set { menu = value; this.RaisePropertyChanged(nameof(Menu)); } 
@@ -25,37 +25,19 @@ public class MainViewModel : ViewModelBase, IScreen
 
     private void CreateMenu()
     {
-        Menu.Add(new MenuItem("Tasks", Router, typeof(TaskViewModel), this));
-        Menu.Add(new MenuItem("Countdowns", Router, typeof(CountdownViewModel), this));
-        Menu.Add(new MenuItem("Memos", Router, typeof(MemoViewModel), this));
+        Menu.Add(new MainMenuItem("Tasks", Router, typeof(TaskViewModel), this));
+        Menu.Add(new MainMenuItem("Countdowns", Router, typeof(CountdownViewModel), this));
+        Menu.Add(new MainMenuItem("Memos", Router, typeof(MemoViewModel), this));
     }
 }
 
-public class MenuItem
+public class MainMenuItem : MenuItem
 {
-    public RoutingState Router { get; }
-    public Type ViewModelType { get; }
-    public IScreen Screen { get; }
-    public string Name { get; set; }
-    public ReactiveCommand<Unit, IRoutableViewModel> NavigateCommand { get; }
-
-    public MenuItem(string name, RoutingState router, Type type, IScreen screen)
+    public MainMenuItem(
+        string name,
+        RoutingState router,
+        Type type,
+        IScreen screen) : base(name, router, type, screen)
     {
-        Name = name;
-        Router = router;
-        ViewModelType = type;
-        Screen = screen;
-        NavigateCommand = ReactiveCommand.CreateFromObservable(Navigate);
-    }
-
-    private IObservable<IRoutableViewModel> Navigate()
-    {
-        var type = ViewModelType;
-        var constructor = type.GetConstructor(new Type[] { typeof(IScreen) });
-        if (constructor == null)
-        {
-            throw new InvalidOperationException("被导航到的ViewModel没有IScreen构造函数参数");
-        }
-        return Router.Navigate.Execute((IRoutableViewModel)constructor.Invoke(new object[] { Screen }));
     }
 }
