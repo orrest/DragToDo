@@ -2,47 +2,35 @@
     x:Class="DragToDo.Views.TaskView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="clr-namespace:DragToDo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+    xmlns:rxui="clr-namespace:Avalonia.ReactiveUI;assembly=Avalonia.ReactiveUI"
+    xmlns:vw="clr-namespace:DragToDo.Views"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
-    <TabControl>
-        <TabControl.Items>
-            <TabItem>
-                <TabItem.Header>
-                    <md:Card>
-                        <TextBlock
-                            Width="200"
-                            Text="周"
-                            TextAlignment="Center" />
-                    </md:Card>
-                </TabItem.Header>
-                <md:Card Margin="30">
-                    <ListBox>
-                        <ListBoxItem>
-                            <Expander Header="任务描述1">
-                                <ListBox>
-                                    <ListBoxItem>
-                                        <md:Card>
-                                            <TextBlock Margin="0,10" Text="步骤描述1" />
-                                        </md:Card>
-                                    </ListBoxItem>
-                                </ListBox>
-                            </Expander>
-                        </ListBoxItem>
-                    </ListBox>
-                </md:Card>
-            </TabItem>
-
-            <TabItem Header="月">
-                <TextBlock Classes="Centered" Text="Page 2" />
-            </TabItem>
-            <TabItem Header="年">
-                <TextBlock Classes="Centered" Text="Page 3" />
-            </TabItem>
-        </TabControl.Items>
-    </TabControl>
+    <Grid RowDefinitions="auto, 9*">
+        <ListBox Margin="0,10,0,0" Classes="taskTabs">
+            <ListBoxItem>
+                <TextBlock Classes="taskTab" Text="1 ITEM 1" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Classes="taskTab" Text="1 ITEM 1" />
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Classes="taskTab" Text="1 ITEM 1" />
+            </ListBoxItem>
+        </ListBox>
+        <rxui:RoutedViewHost Grid.Row="1" Router="{Binding Router}">
+            <rxui:RoutedViewHost.DefaultContent>
+                <!--<vw:TaskView /> TODO-->
+            </rxui:RoutedViewHost.DefaultContent>
+            <rxui:RoutedViewHost.ViewLocator>
+                <!--  See AppViewLocator.cs section below  -->
+                <app:AppViewLocator />
+            </rxui:RoutedViewHost.ViewLocator>
+        </rxui:RoutedViewHost>
+    </Grid>
 </UserControl>

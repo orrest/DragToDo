@@ -4,18 +4,21 @@
     xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles">
     <Design.PreviewWith>
         <Border Padding="20">
-            <ListBox Classes="menuList">
-                <ListBox.Items>
-                    <ListBoxItem>
-                        <Grid>
-                            <TextBlock Text="Abc" />
-                        </Grid>
-                    </ListBoxItem>
-                </ListBox.Items>
+            <ListBox Classes="taskTabs">
+                <ListBoxItem>
+                    <TextBlock Classes="taskTab" Text="1 ITEM 1" />
+                </ListBoxItem>
+                <ListBoxItem>
+                    <TextBlock Classes="taskTab" Text="1 ITEM 1" />
+                </ListBoxItem>
+                <ListBoxItem>
+                    <TextBlock Classes="taskTab" Text="1 ITEM 1" />
+                </ListBoxItem>
             </ListBox>
         </Border>
     </Design.PreviewWith>
 
+    <!--  ListBox.menuList ListBoxItem  -->
     <Style Selector="ListBox.menuList ListBoxItem">
         <Setter Property="Background" Value="#4C4A48" />
         <Setter Property="Padding" Value="0" />
@@ -54,4 +57,46 @@
         <Setter Property="IsVisible" Value="True" />
     </Style>
 
+    <!--  ListBox.taskTabs  -->
+    <Style Selector="ListBox.taskTabs">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="ListBox.taskTabs ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid Margin="5">
+                        <md:Card
+                            Grid.Column="1"
+                            Padding="0"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="1">
+                            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </md:Card>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="ListBox.taskTabs ListBoxItem:pointerover">
+        <Setter Property="Background" Value="#5D5A58" />
+    </Style>
+
+    <Style Selector="ListBox.taskTabs ListBoxItem:selected">
+        <Setter Property="Background" Value="#5D5A58" />
+    </Style>
+
+    <Style Selector="TextBlock.taskTab">
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Margin" Value="8" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
 </Styles>
