@@ -11,7 +11,7 @@ public class TaskViewModel : ViewModelBase, IRoutableViewModel, IScreen, IMenuVi
     public string UrlPathSegment { get; } = Guid.NewGuid().ToString().Substring(0, 5);
 
     // Reference to IScreen that owns the routable view model.
-    public IScreen HostScreen { get; }
+    public IScreen? HostScreen { get; }
 
     public RoutingState Router { get; } = new RoutingState();
 
@@ -22,10 +22,14 @@ public class TaskViewModel : ViewModelBase, IRoutableViewModel, IScreen, IMenuVi
         set { menu = value; this.RaisePropertyChanged(nameof(Menu)); }
     }
 
-    public TaskViewModel(IScreen hostScreen)
+    public TaskViewModel()
+    {
+        CreateMenu();
+    }
+
+    public TaskViewModel(IScreen hostScreen) : this()
     {
         HostScreen = hostScreen;
-        CreateMenu();
     }
 
     public void CreateMenu()

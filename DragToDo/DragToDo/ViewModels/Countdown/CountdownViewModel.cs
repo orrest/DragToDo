@@ -11,6 +11,11 @@ public class CountdownViewModel : ViewModelBase, IRoutableViewModel
     // Reference to IScreen that owns the routable view model.
     public IScreen HostScreen { get; }
 
+    public CountdownViewModel()
+    {
+        
+    }
+
     public CountdownViewModel(IScreen screen)
     {
         HostScreen = screen;

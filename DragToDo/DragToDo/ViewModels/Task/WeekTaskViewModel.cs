@@ -11,6 +11,11 @@ public class WeekTaskViewModel : ViewModelBase, IRoutableViewModel
     // Reference to IScreen that owns the routable view model.
     public IScreen HostScreen { get; }
 
+    public WeekTaskViewModel()
+    {
+        
+    }
+
     public WeekTaskViewModel(IScreen screen)
     {
         HostScreen = screen;

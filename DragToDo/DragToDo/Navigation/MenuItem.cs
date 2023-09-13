@@ -1,4 +1,6 @@
-﻿using ReactiveUI;
+﻿using DragToDo.DependencyInjection;
+using ReactiveUI;
+using Splat;
 using System;
 using System.Reactive;
 
@@ -24,11 +26,7 @@ public abstract class MenuItem
     private IObservable<IRoutableViewModel> Navigate()
     {
         var type = ViewModelType;
-        var constructor = type.GetConstructor(new Type[] { typeof(IScreen) });
-        if (constructor == null)
-        {
-            throw new InvalidOperationException("被导航到的ViewModel没有IScreen构造函数参数");
-        }
-        return Router.Navigate.Execute((IRoutableViewModel)constructor.Invoke(new object[] { Screen }));
+        // TODO not return new instance
+        return Router.Navigate.Execute((IRoutableViewModel)Locator.Current.GetRequiredService(type));
     }
 }

@@ -9,6 +9,11 @@ public class YearTaskViewModel : ViewModelBase, IRoutableViewModel
 
     public IScreen HostScreen { get; }
 
+    public YearTaskViewModel()
+    {
+        
+    }
+
     public YearTaskViewModel(IScreen screen)
     {
         HostScreen = screen;

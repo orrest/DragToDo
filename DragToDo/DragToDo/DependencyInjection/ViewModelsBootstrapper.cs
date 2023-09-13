@@ -1,6 +1,8 @@
 ﻿using DragToDo.Services.Abstractions;
 using DragToDo.Services.Implements;
 using DragToDo.ViewModels;
+using DragToDo.Views;
+using ReactiveUI;
 using Splat;
 
 namespace DragToDo.DependencyInjection;
@@ -26,7 +28,16 @@ public static class ViewModelsBootstrapper
 
     private static void RegisterCommonViewModels(IMutableDependencyResolver services, IReadonlyDependencyResolver resolver)
     {
-        services.Register(() => new MainViewModel());
+        services.RegisterLazySingleton(() => new MainViewModel());
+
+        services.RegisterLazySingleton(() => new TaskViewModel());
+        services.RegisterLazySingleton(() => new CountdownViewModel());
+        services.RegisterLazySingleton(() => new MemoViewModel());
+
+        services.RegisterLazySingleton(() => new WeekTaskViewModel());
+        services.RegisterLazySingleton(() => new MonthTaskViewModel());
+        services.RegisterLazySingleton(() => new YearTaskViewModel());
+
     }
 
     private static void RegisterPlatformSpecificViewModels(IMutableDependencyResolver services, IReadonlyDependencyResolver resolver)
