@@ -5,9 +5,9 @@ using ReactiveUI;
 
 namespace DragToDo.Views;
 
-public partial class MemoView : ReactiveUserControl<MemoViewModel>
+public partial class YearTaskView : ReactiveUserControl<YearTaskViewModel>
 {
-    public MemoView()
+    public YearTaskView()
     {
         this.WhenActivated(disposables => { });
         AvaloniaXamlLoader.Load(this);

@@ -31,11 +31,12 @@
                 <TextBlock
                     Margin="20"
                     FontSize="18"
-                    Text="Title" />
+                    Text="{Binding SelectedMenuItem.Name}" />
                 <ListBox
                     Grid.Row="1"
                     Classes="menuList"
-                    ItemsSource="{Binding Menu}">
+                    ItemsSource="{Binding Menu}"
+                    SelectedItem="{Binding SelectedMenuItem}">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:MainMenuItem}">
                             <Grid>

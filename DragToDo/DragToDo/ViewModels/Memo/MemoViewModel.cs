@@ -3,7 +3,7 @@ using System;
 
 namespace DragToDo.ViewModels;
 
-public class CountdownViewModel: ViewModelBase, IRoutableViewModel
+public class MemoViewModel : ViewModelBase, IRoutableViewModel
 {
     // Unique identifier for the routable view model.
     public string UrlPathSegment { get; } = Guid.NewGuid().ToString().Substring(0, 5);
@@ -11,7 +11,7 @@ public class CountdownViewModel: ViewModelBase, IRoutableViewModel
     // Reference to IScreen that owns the routable view model.
     public IScreen HostScreen { get; }
 
-    public CountdownViewModel(IScreen screen)
+    public MemoViewModel(IScreen screen)
     {
         HostScreen = screen;
     }

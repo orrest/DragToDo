@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace DragToDo.ViewModels;
 
-public class MainViewModel : ViewModelBase, IScreen
+public class MainViewModel : ViewModelBase, IScreen, IMenuView<MainMenuItem>
 {
     // The Router associated with this Screen.
     // Required by the IScreen interface.
@@ -18,16 +18,25 @@ public class MainViewModel : ViewModelBase, IScreen
         set { menu = value; this.RaisePropertyChanged(nameof(Menu)); } 
     }
 
+    private MainMenuItem selectedMenuItem;
+    public MainMenuItem SelectedMenuItem
+    {
+        get { return selectedMenuItem; }
+        set { selectedMenuItem = value; this.RaisePropertyChanged(); }
+    }
+
     public MainViewModel()
     {
         CreateMenu();
     }
 
-    private void CreateMenu()
+    public void CreateMenu()
     {
         Menu.Add(new MainMenuItem("Tasks", Router, typeof(TaskViewModel), this));
         Menu.Add(new MainMenuItem("Countdowns", Router, typeof(CountdownViewModel), this));
         Menu.Add(new MainMenuItem("Memos", Router, typeof(MemoViewModel), this));
+        SelectedMenuItem = Menu[0];
+        SelectedMenuItem.NavigateCommand.Execute();
     }
 }
 
