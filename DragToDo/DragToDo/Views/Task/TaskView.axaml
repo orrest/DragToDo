@@ -35,13 +35,12 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <rxui:RoutedViewHost Grid.Row="1" Router="{Binding Router}">
-            <rxui:RoutedViewHost.DefaultContent>
-                <vw:WeekTaskView />
-            </rxui:RoutedViewHost.DefaultContent>
-            <rxui:RoutedViewHost.ViewLocator>
-                <app:AppViewLocator />
-            </rxui:RoutedViewHost.ViewLocator>
-        </rxui:RoutedViewHost>
+        <md:Card Grid.Row="1" Margin="20,35">
+            <rxui:RoutedViewHost Router="{Binding Router}">
+                <rxui:RoutedViewHost.ViewLocator>
+                    <app:AppViewLocator />
+                </rxui:RoutedViewHost.ViewLocator>
+            </rxui:RoutedViewHost>
+        </md:Card>
     </Grid>
 </UserControl>

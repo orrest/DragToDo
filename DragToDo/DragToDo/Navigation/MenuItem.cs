@@ -26,7 +26,6 @@ public abstract class MenuItem
     private IObservable<IRoutableViewModel> Navigate()
     {
         var type = ViewModelType;
-        // TODO not return new instance
         return Router.Navigate.Execute((IRoutableViewModel)Locator.Current.GetRequiredService(type));
     }
 }

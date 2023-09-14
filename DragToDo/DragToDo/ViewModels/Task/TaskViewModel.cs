@@ -25,6 +25,8 @@ public class TaskViewModel : ViewModelBase, IRoutableViewModel, IScreen, IMenuVi
     public TaskViewModel()
     {
         CreateMenu();
+        // Navigate to first page manually.
+        Menu[0].NavigateCommand.Execute();
     }
 
     public TaskViewModel(IScreen hostScreen) : this()

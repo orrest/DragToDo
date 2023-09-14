@@ -99,4 +99,5 @@
         <Setter Property="Margin" Value="8" />
         <Setter Property="TextAlignment" Value="Center" />
     </Style>
+
 </Styles>
