@@ -31,7 +31,10 @@
                                     IsChecked="{Binding IsFinished}"
                                     IsExpanded="{Binding IsExpanded}"
                                     Text="{Binding Description}">
-                                    <Panel Margin="0,0,0,10" DragDrop.AllowDrop="True">
+                                    <Panel
+                                        Margin="0,0,0,10"
+                                        b:DroppedBehav.Command="{Binding DragCommand}"
+                                        DragDrop.AllowDrop="True">
                                         <Border
                                             MinHeight="70"
                                             Background="DimGray"
