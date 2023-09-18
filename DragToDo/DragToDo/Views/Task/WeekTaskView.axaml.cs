@@ -3,9 +3,9 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using DragToDo.ViewModels;
 using DragToDo.Helpers;
-using Material.Icons;
 using ReactiveUI;
 using System;
+using Avalonia.Controls;
 
 namespace DragToDo.Views;
 
@@ -31,10 +31,24 @@ public partial class WeekTaskView : ReactiveUserControl<WeekTaskViewModel>
             
             if (files == null) return;
 
-            var context = this.DataContext as WeekTaskViewModel;
-            if (context == null)
+            var rectangle = (Control)e.Source;
+
+            // TODO 改成附加属性会更好
+            if (rectangle == null)
             {
-                throw new Exception("ViewModel's type not right.");
+                throw new ArgumentException("不应发生, UI或有改动");
+            }
+
+            var panel = rectangle.Parent;
+            if (panel == null)
+            {
+                throw new ArgumentException("不应发生, UI或有改动");
+            }
+
+            var stepDataContext = (StepItemViewModel) panel.DataContext;
+            if (stepDataContext == null)
+            {
+                throw new ArgumentException("不应发生, UI或有改动");
             }
 
             // 根据交互添加数据到VM中
@@ -43,12 +57,13 @@ public partial class WeekTaskView : ReactiveUserControl<WeekTaskViewModel>
                 var path = fileInfo.Path.LocalPath.ToString();
                 var name = fileInfo.Name;
                 var icon = name.GetIcon();
-                context.DroppedItems.Add(new DroppedItemViewModel()
+                var newDropped = new DroppedItemViewModel()
                 {
                     Icon = icon.ToString(),
                     Path = path,
                     Name = name
-                });
+                };
+                stepDataContext.DroppedItems.Add(newDropped);
             }
         }
         else if (e.Data.Contains(DataFormats.Text))

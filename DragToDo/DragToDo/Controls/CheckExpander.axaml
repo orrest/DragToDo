@@ -1,0 +1,128 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:DragToDo.Controls"
+    xmlns:converters="using:DragToDo.Converters"
+    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:md="clr-namespace:Material.Styles.Controls;assembly=Material.Styles">
+    <Design.PreviewWith>
+        <Grid Height="200">
+            <controls:CheckExpander>
+                <TextBlock Background="AliceBlue" Text="Hi~" />
+            </controls:CheckExpander>
+        </Grid>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|CheckExpander">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <md:Card Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
+                    <Grid
+                        Background="{TemplateBinding Background}"
+                        ColumnDefinitions="Auto, *, Auto"
+                        RowDefinitions="Auto, Auto">
+                        <Button
+                            x:Name="PART_CheckIndicator"
+                            Margin="10,0"
+                            HorizontalAlignment="Center"
+                            BorderThickness="2"
+                            Command="{TemplateBinding CheckCommand}">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border
+                                        x:Name="PART_PointeroverIndicator"
+                                        Width="20"
+                                        Height="20"
+                                        CornerRadius="10">
+                                        <Panel>
+                                            <icons:MaterialIcon
+                                                Width="24"
+                                                Height="24"
+                                                Kind="CircleOutline" />
+                                            <icons:MaterialIcon
+                                                x:Name="PART_CheckedIcon"
+                                                Width="20"
+                                                Height="20"
+                                                IsVisible="{Binding IsChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:CheckExpander}}}"
+                                                Kind="Check" />
+                                        </Panel>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <TextBox
+                            x:Name="PART_TextField"
+                            Grid.Column="1"
+                            Margin="8,0"
+                            Padding="0"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="0"
+                            CaretBrush="White"
+                            Foreground="{TemplateBinding Foreground}"
+                            Text="{TemplateBinding Text}"
+                            Theme="{StaticResource SoloTextBox}"
+                            Watermark="nothing..." />
+                        <ToggleButton
+                            Grid.Column="2"
+                            Height="24"
+                            VerticalAlignment="Center"
+                            IsChecked="{TemplateBinding IsExpanded,
+                                                        Mode=TwoWay}"
+                            Theme="{StaticResource DownExpanderToggleButtonPart}" />
+                        <Border
+                            x:Name="PART_ExpanderContent"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="3"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            Padding="{TemplateBinding Padding}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            IsVisible="{TemplateBinding IsExpanded}">
+                            <ContentPresenter
+                                x:Name="PART_ContentPresenter"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                    </Grid>
+                </md:Card>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="Border#PART_PointeroverIndicator:pointerover">
+        <Setter Property="Background" Value="DarkGray" />
+    </Style>
+
+    <Style Selector="controls|CheckExpander[IsChecked=True] /template/ TextBox#PART_TextField">
+        <Setter Property="Foreground" Value="DarkGray" />
+    </Style>
+
+    <Style Selector="controls|CheckExpander[IsExpanded=true] /template/ Border#PART_ExpanderContent">
+        <Style.Animations>
+            <Animation
+                Easing="LinearEasing"
+                FillMode="Both"
+                Duration="0:0:0.25">
+                <KeyFrame Cue="0%">
+                    <Setter Property="Opacity" Value="0" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="0" />
+                </KeyFrame>
+                <KeyFrame Cue="100%">
+                    <Setter Property="Opacity" Value="1" />
+                    <Setter Property="ScaleTransform.ScaleX" Value="1" />
+                    <Setter Property="ScaleTransform.ScaleY" Value="1" />
+                </KeyFrame>
+            </Animation>
+        </Style.Animations>
+    </Style>
+</Styles>

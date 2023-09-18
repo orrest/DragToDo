@@ -15,6 +15,8 @@
             SecondaryColor="Lime" />
         <icons:MaterialIconStyles />
         <StyleInclude Source="/Styles/Common.axaml" />
+        <StyleInclude Source="/Controls/CheckExpander.axaml" />
+
     </Application.Styles>
     <Application.Resources>
         <FontFamily x:Key="ContentControlThemeFontFamily">fonts:Inter#Inter, $Default</FontFamily>
